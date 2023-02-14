@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Happy Birthday to saron</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+  <!-- =======================================================
+  * Template Name: BizPage - v4.0.0
+  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="body">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-transparent" style="background-color: purple">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center">
+        <div class="col-xl-11 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="{% url 'home' %}">2013</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+          <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li ><a href="wishes">wishes</a></li>
+                <li><a href="{% url 'videos' %}">videos</a></li>
+                <li><a href="{% url 'makeawish' %}">make a wish</a></li>
+                <li class="active"><a href="{% url 'giveagift' %}">Give a gift</a></li>
+                <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+              </ul>
+          </nav><!-- .nav-menu -->
+        </div>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Intro Section ======= -->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(static/img/giftss.gif)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown" style="color: #e75480">Gifts</h2>
+                <a href="{% url 'login' %}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get My Gifts</a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section><!-- End Intro Section -->
+
+  <div class="row">
+    <div class="col-12">
+        <br>
+        
+        <br>
+        <div id="message">
+            {% block content %}
+           <div>
+            <form action="giveagift" method="post">
+                {% csrf_token %}
+                <div class="form-group" >
+                    <label for="name"><strong>Your name</strong></label>
+                    <br>
+                    <input type="text" width="50" class="form-control" name="name" placeholder="your name">
+                </div>
+                <br>
+                <div class="form-group" >
+                    <label for="name"><strong>Your email</strong></label>
+                    <br>
+                    <input type="email" width="50" class="form-control" name="email" placeholder="email">
+                    <br>
+                    <p><strong>you gift here we be notified when she opens your gift</strong></p>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="message"><strong>Your Gift</strong></label>
+                    <br>
+                    <br>
+                    <textarea class="form-control" cols="35" placeholder="example - gifts can be can be a mobile card nubers , special messages , ticket numbers and promises...." rows="7" name="gift" rows="3"></textarea>
+                </div>
+                <br>
+                <div class="form-group" >
+                    <label for="name"><strong>Your gift type</strong></label>
+                    <br>
+                    <input type="text" width="50" class="form-control" name="gifttype" placeholder="your gift type">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success">Make it</button>
+                <br>
+                <br>
+                <div class="alert alert-info" style="height: 10px," role="alert">
+                    <p>example - gift type can be can be a mobile card numbers , special messages , ticket numbers and promises....</p>
+                </div>
+                <br>
+                <div class="alert alert-info" style="height: 10px," role="alert">
+                    Gifts can be opened only by saron, for special gift surprises contact us<strong> click <a href="mailto:nitsuhdemissew21@gmail.com"> here</a> to email us</strong>
+                </div>
+                <br>
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+                <br>
+                <br>
+            </form>
+           </div>
+            {% endblock %}
+        </div>
+        
+    </div>
+</div>
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top" style="background-color: purple">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <strong><p style="color: black;">contact us to give gifts for any events</p></strong>
+            <p>
+              Nitsuh Technologies <br>
+              Addis Ababa<br>
+              Ethiopia <br>
+              <strong>Phone:</strong><a href="tel:+251 910 05 05 69">0910 05 05 69</a> <br>
+              <strong><p>click here to email us <a href="mailto:info@example.com">nitsuhdemissew21@gmail.com</a></p></strong>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="t.me/Nitsiman" class="instagram"><i class="fa fa-telegram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+      -->
+        Designed by <a href="https://nitsuhdemissew21.wixsite.com/nitsuhtechnologies">Nitsuh Technologies</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <style>
+      #message{
+          margin-left : 4%;
+      }
+      .body{
+        background-repeat: no-repeat;
+        background:url(static/img/gifts.gif);
+        
+      }
+      #message{
+          width: 95%;
+      }
+  </style>
+</body>
+
+</html>
